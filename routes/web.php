@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index');
+});
+
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
+    Auth::routes();
+
+    Route::get('/', 'DashboardController@index');
 });
