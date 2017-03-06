@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Backend\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -35,6 +36,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest:admins', ['except' => 'logout']);
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admins');
     }
 
     /**
