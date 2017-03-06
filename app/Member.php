@@ -10,6 +10,11 @@ class Member extends Authenticatable
     use Notifiable;
 
     /**
+     * @var string
+     */
+    protected $guard = "web";
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

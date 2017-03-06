@@ -10,6 +10,11 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * @var string
+     */
+    protected $guard = "admins";
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
