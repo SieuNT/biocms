@@ -27,5 +27,4 @@ class Member extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $guard = 'admins';
 }
