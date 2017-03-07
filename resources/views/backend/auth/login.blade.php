@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <input id="password" type="password" class="form-control" name="password" placeholder="Mật khẩu" required>
+            <input id="password" type="password" class="form-control" name="password" placeholder="@lang('auth.password')" required>
 
             @if ($errors->has('password'))
                 <span class="help-block text-left">
@@ -28,13 +28,13 @@
                 <div class="col-xs-6">
                     <div class="checkbox text-left">
                         <label>
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> ghi nhớ đăng nhập
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> @lang('auth.remember_login')
                         </label>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="text-right">
-                        <button type="submit" class="btn btn-success submit">Đăng nhập</button>
+                        <button type="submit" class="btn btn-success submit">@lang('auth.login')</button>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,7 @@
         <div class="clearfix"></div>
         <div class="separator">
             <p class="change_link">
-                <a class="btn btn-link" href="{{ route('admin.password.request') }}">
-                    Forgot Your Password?
-                </a>
+                <a class="btn btn-link" href="{{ route('admin.password.request') }}">{{ __('auth.forgot_your_password') }}</a>
             </p>
         </div>
     </form>

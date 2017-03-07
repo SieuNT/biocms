@@ -15,5 +15,8 @@ return [
 
     'failed' => 'Email hoặc mật khẩu bạn vừa nhập không chính xác.',
     'throttle' => 'Đăng nhập sai quá nhiều lần. Bạn hãy thử lại sau :seconds giây.',
-
+    'forgot_your_password' => 'Bạn gặp vấn đề khi đăng nhập?',
+    'login' => 'Đăng nhập',
+    'remember_login' => 'Duy trì đăng nhập',
+    'password' => 'Mật khẩu'
 ];
