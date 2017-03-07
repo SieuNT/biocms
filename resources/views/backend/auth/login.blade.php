@@ -1,11 +1,13 @@
 @extends('layouts.auth.backend')
 
 @section('content')
-    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.auth.login') }}">
-        {{ csrf_field() }}
 
+    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.auth.login') }}">
+        <h1>Đăng nhập</h1>
+
+        {{ csrf_field() }}
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="@lang('auth.email')" required autofocus>
             @if ($errors->has('email'))
                 <span class="help-block text-left">
                     <strong>{{ $errors->first('email') }}</strong>

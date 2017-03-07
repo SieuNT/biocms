@@ -17,6 +17,10 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'forgot_your_password' => 'Forgot your password?',
     'login' => 'Login',
+    'forgot_password' => 'Forgot password',
+    'reset_password' => 'Reset Password',
     'remember_login' => 'Stay signed in',
-    'password' => 'Password'
+    'password' => 'Password',
+    'email' => 'Email',
+    'send_password_reset_link' => 'Send Password Reset Link',
 ];
