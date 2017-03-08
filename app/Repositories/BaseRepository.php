@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Contracts\RepositoryInterface;
 use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseRepository implements RepositoryInterface {
 
@@ -27,33 +28,35 @@ abstract class BaseRepository implements RepositoryInterface {
 
     public function makeModel() {
         $model = $this->app->make($this->model());
-
+        if(!$model instanceof Model) {
+            throw new \Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        }
         return $this->model = $model;
-    }
-
-    public function lists($column, $key = null)
-    {
-        // TODO: Implement lists() method.
     }
 
     public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
     {
-        // TODO: Implement paginate() method.
+        return $this->model->paginate($perPage, $columns);
     }
 
     public function all($columns = ['*'])
     {
-        // TODO: Implement all() method.
+        return $this->model->get($columns);
     }
 
-    public function create(array $attributes = [])
+    public function lists($column, $key = null)
     {
-        // TODO: Implement create() method.
+        return $this->model->pluck($column, $key);
     }
 
-    public function update(array $attributes = [], array $options = [])
+    public function create(array $data = [])
     {
-        // TODO: Implement update() method.
+        return $this->model->create($data);
+    }
+
+    public function update(array $data = [], $id, array $attributes = [])
+    {
+        return $this->model->where($attributes, '=', $id)->update($data);
     }
 
     public function destroy($ids)

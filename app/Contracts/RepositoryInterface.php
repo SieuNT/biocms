@@ -7,9 +7,9 @@ interface RepositoryInterface {
 
     public function all($columns = ['*']);
 
-    public function create(array $attributes = []);
+    public function create(array $data = []);
 
-    public function update(array $attributes = [], array $options = []);
+    public function update(array $data = [], $id, array $attributes = []);
 
     public function destroy($ids);
 
