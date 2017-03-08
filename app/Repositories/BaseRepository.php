@@ -54,23 +54,28 @@ abstract class BaseRepository implements RepositoryInterface {
         return $this->model->create($data);
     }
 
-    public function update(array $data = [], $id, array $attributes = [])
+    public function update(array $data = [], $value, array $field = ['id'])
     {
-        return $this->model->where($attributes, '=', $id)->update($data);
+        return $this->model->where($field, '=', $value)->update($data);
     }
 
-    public function destroy($ids)
+    public function updateOrCreate(array $attribues, array $values = [])
     {
-        // TODO: Implement destroy() method.
+        return $this->model->updateOrInsert($attribues, $values);
     }
 
-    public function findOrFail($id)
+    public function destroy($id)
     {
-        // TODO: Implement findOrFail() method.
+        return $this->model->destroy($id);
     }
 
-    public function where($column, $operator = null, $value = null, $boolean = 'AND')
+    public function find($id, $columns = ['*'])
     {
-        // TODO: Implement where() method.
+        return $this->model->where('id', '=', $id)->first($columns);
+    }
+
+    public function where($column, $operator = null, $value = null, $boolean = 'and')
+    {
+        return $this->model->where($column, $operator, $value, $boolean);
     }
 }
